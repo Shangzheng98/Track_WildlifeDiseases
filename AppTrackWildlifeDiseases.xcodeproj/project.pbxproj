@@ -14,6 +14,11 @@
 		2AB2266825DEBDD2004F8350 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB2266725DEBDD2004F8350 /* Assets.xcassets */; };
 		2AB2266B25DEBDD2004F8350 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB2266A25DEBDD2004F8350 /* Preview Assets.xcassets */; };
 		2AB2266E25DEBDD2004F8350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AB2266C25DEBDD2004F8350 /* LaunchScreen.storyboard */; };
+		2AB2267825DECD84004F8350 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2267725DECD84004F8350 /* Description.swift */; };
+		2AB2267C25DECDBF004F8350 /* PictureTakeing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2267B25DECDBF004F8350 /* PictureTakeing.swift */; };
+		2AB2268425DED8D1004F8350 /* Common Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2268325DED8D1004F8350 /* Common Source.swift */; };
+		2AB2268725DEDD7A004F8350 /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2268625DEDD7A004F8350 /* AboutUs.swift */; };
+		2AB2268C25DEE451004F8350 /* Project Leader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2268B25DEE451004F8350 /* Project Leader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		2AB2266A25DEBDD2004F8350 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2AB2266D25DEBDD2004F8350 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AB2266F25DEBDD2004F8350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AB2267725DECD84004F8350 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
+		2AB2267B25DECDBF004F8350 /* PictureTakeing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTakeing.swift; sourceTree = "<group>"; };
+		2AB2268325DED8D1004F8350 /* Common Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Common Source.swift"; sourceTree = "<group>"; };
+		2AB2268625DEDD7A004F8350 /* AboutUs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
+		2AB2268B25DEE451004F8350 /* Project Leader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project Leader.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,9 @@
 		2AB2265D25DEBDCF004F8350 /* AppTrackWildlifeDiseases */ = {
 			isa = PBXGroup;
 			children = (
+				2AB2267F25DECDE2004F8350 /* Record */,
+				2AB2267A25DECDA8004F8350 /* Update Case */,
+				2AB2267625DECD4A004F8350 /* About us */,
 				2AB2265E25DEBDCF004F8350 /* AppDelegate.swift */,
 				2AB2266025DEBDCF004F8350 /* SceneDelegate.swift */,
 				2AB2266225DEBDCF004F8350 /* ContentView.swift */,
@@ -66,6 +79,7 @@
 				2AB2266F25DEBDD2004F8350 /* Info.plist */,
 				2AB2266425DEBDCF004F8350 /* AppTrackWildlifeDiseases.xcdatamodeld */,
 				2AB2266925DEBDD2004F8350 /* Preview Content */,
+				2AB2268325DED8D1004F8350 /* Common Source.swift */,
 			);
 			path = AppTrackWildlifeDiseases;
 			sourceTree = "<group>";
@@ -76,6 +90,31 @@
 				2AB2266A25DEBDD2004F8350 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2AB2267625DECD4A004F8350 /* About us */ = {
+			isa = PBXGroup;
+			children = (
+				2AB2267725DECD84004F8350 /* Description.swift */,
+				2AB2268625DEDD7A004F8350 /* AboutUs.swift */,
+				2AB2268B25DEE451004F8350 /* Project Leader.swift */,
+			);
+			name = "About us";
+			sourceTree = "<group>";
+		};
+		2AB2267A25DECDA8004F8350 /* Update Case */ = {
+			isa = PBXGroup;
+			children = (
+				2AB2267B25DECDBF004F8350 /* PictureTakeing.swift */,
+			);
+			name = "Update Case";
+			sourceTree = "<group>";
+		};
+		2AB2267F25DECDE2004F8350 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Record;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,8 +189,13 @@
 			files = (
 				2AB2266625DEBDCF004F8350 /* AppTrackWildlifeDiseases.xcdatamodeld in Sources */,
 				2AB2265F25DEBDCF004F8350 /* AppDelegate.swift in Sources */,
+				2AB2268425DED8D1004F8350 /* Common Source.swift in Sources */,
+				2AB2268725DEDD7A004F8350 /* AboutUs.swift in Sources */,
+				2AB2267C25DECDBF004F8350 /* PictureTakeing.swift in Sources */,
+				2AB2267825DECD84004F8350 /* Description.swift in Sources */,
 				2AB2266125DEBDCF004F8350 /* SceneDelegate.swift in Sources */,
 				2AB2266325DEBDCF004F8350 /* ContentView.swift in Sources */,
+				2AB2268C25DEE451004F8350 /* Project Leader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
