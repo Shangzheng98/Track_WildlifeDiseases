@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AboutUs: View {
+    @EnvironmentObject var userData: UserData
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -16,7 +18,12 @@ struct AboutUs: View {
                         .padding(.bottom)
                     ProjectLeader()
                         .padding([.bottom, .top])
+                    
+                    if userData.networkStatus != "offline" {
+                        MangeDescription()
+                        }
                     }
+                
             }
             .navigationBarTitle(Text("About Us"))
     

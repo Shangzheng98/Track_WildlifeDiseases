@@ -11,10 +11,13 @@ struct Description: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            Text("Project Descrition")
-                .font(.title)
-                .multilineTextAlignment(.leading)
-                .padding(.bottom)
+            Link(destination:URL(string:webpageURL)!) {
+                Text("Project Descrition")
+                    .font(.title)
+                    .multilineTextAlignment(.leading)
+                    .padding(.bottom)
+            }
+            
             Text(descriptionContent)
                 .multilineTextAlignment(.leading)
         }

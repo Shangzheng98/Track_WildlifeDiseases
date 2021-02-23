@@ -12,10 +12,13 @@ let contents = ["D.V.M., Universidad de San Carlos, Guatemala City, Guatemala (A
 struct ProjectLeader: View {
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Profile")
-                .font(.title)
-                .multilineTextAlignment(.leading)
-                .padding(.bottom)
+            Link(destination:URL(string:profileURL)!) {
+                Text("Profile")
+                    .font(.title)
+                    .multilineTextAlignment(.leading)
+                    .padding(.bottom)
+            }
+            
             HStack() {
                 Image("profile")
                     .resizable()
