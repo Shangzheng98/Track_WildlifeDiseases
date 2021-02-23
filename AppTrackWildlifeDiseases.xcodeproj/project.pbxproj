@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,8 @@
 		2AB226A525E57FFA004F8350 /* UtilityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB226A425E57FFA004F8350 /* UtilityFunction.swift */; };
 		2AB226A825E5855A004F8350 /* GeoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB226A725E5855A004F8350 /* GeoInformation.swift */; };
 		2AB226AC25E5886A004F8350 /* RecordStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB226AB25E5886A004F8350 /* RecordStruct.swift */; };
+		2AB226BB25E59D82004F8350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AB226BD25E59D82004F8350 /* GoogleService-Info.plist */; };
+		8326AAA51FAAB5015EFFE55E /* Pods_AppTrackWildlifeDiseases.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7C4EDD2A7D711C93BA3215 /* Pods_AppTrackWildlifeDiseases.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,10 @@
 		2AB226A425E57FFA004F8350 /* UtilityFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunction.swift; sourceTree = "<group>"; };
 		2AB226A725E5855A004F8350 /* GeoInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInformation.swift; sourceTree = "<group>"; };
 		2AB226AB25E5886A004F8350 /* RecordStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStruct.swift; sourceTree = "<group>"; };
+		2AB226BC25E59D82004F8350 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = "Base.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BC7C4EDD2A7D711C93BA3215 /* Pods_AppTrackWildlifeDiseases.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppTrackWildlifeDiseases.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C273ED83FC9D5DD9A8D97173 /* Pods-AppTrackWildlifeDiseases.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTrackWildlifeDiseases.release.xcconfig"; path = "Target Support Files/Pods-AppTrackWildlifeDiseases/Pods-AppTrackWildlifeDiseases.release.xcconfig"; sourceTree = "<group>"; };
+		D4131DE311A7617B71FACF4F /* Pods-AppTrackWildlifeDiseases.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTrackWildlifeDiseases.debug.xcconfig"; path = "Target Support Files/Pods-AppTrackWildlifeDiseases/Pods-AppTrackWildlifeDiseases.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +67,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8326AAA51FAAB5015EFFE55E /* Pods_AppTrackWildlifeDiseases.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1657961D2F02AE819D0263FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4131DE311A7617B71FACF4F /* Pods-AppTrackWildlifeDiseases.debug.xcconfig */,
+				C273ED83FC9D5DD9A8D97173 /* Pods-AppTrackWildlifeDiseases.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2AB2265225DEBDCF004F8350 = {
 			isa = PBXGroup;
 			children = (
 				2AB2265D25DEBDCF004F8350 /* AppTrackWildlifeDiseases */,
 				2AB2265C25DEBDCF004F8350 /* Products */,
+				1657961D2F02AE819D0263FD /* Pods */,
+				2B555D2556D02A2241B79BA1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +117,7 @@
 				2AB2266F25DEBDD2004F8350 /* Info.plist */,
 				2AB2266425DEBDCF004F8350 /* AppTrackWildlifeDiseases.xcdatamodeld */,
 				2AB2266925DEBDD2004F8350 /* Preview Content */,
+				2AB226BD25E59D82004F8350 /* GoogleService-Info.plist */,
 				2AB2268325DED8D1004F8350 /* Common Source.swift */,
 			);
 			path = AppTrackWildlifeDiseases;
@@ -160,6 +179,14 @@
 			name = "Data Model";
 			sourceTree = "<group>";
 		};
+		2B555D2556D02A2241B79BA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC7C4EDD2A7D711C93BA3215 /* Pods_AppTrackWildlifeDiseases.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2AB2267225DEBDD2004F8350 /* Build configuration list for PBXNativeTarget "AppTrackWildlifeDiseases" */;
 			buildPhases = (
+				F4EB1ED705007A867DB68256 /* [CP] Check Pods Manifest.lock */,
 				2AB2265725DEBDCF004F8350 /* Sources */,
 				2AB2265825DEBDCF004F8350 /* Frameworks */,
 				2AB2265925DEBDCF004F8350 /* Resources */,
+				46C571D0FE4A1529238DCD8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,12 +247,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB2266E25DEBDD2004F8350 /* LaunchScreen.storyboard in Resources */,
+				2AB226BB25E59D82004F8350 /* GoogleService-Info.plist in Resources */,
 				2AB2266B25DEBDD2004F8350 /* Preview Assets.xcassets in Resources */,
 				2AB2266825DEBDD2004F8350 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		46C571D0FE4A1529238DCD8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppTrackWildlifeDiseases/Pods-AppTrackWildlifeDiseases-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppTrackWildlifeDiseases/Pods-AppTrackWildlifeDiseases-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppTrackWildlifeDiseases/Pods-AppTrackWildlifeDiseases-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4EB1ED705007A867DB68256 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppTrackWildlifeDiseases-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2AB2265725DEBDCF004F8350 /* Sources */ = {
@@ -260,6 +332,14 @@
 				2AB2266D25DEBDD2004F8350 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2AB226BD25E59D82004F8350 /* GoogleService-Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AB226BC25E59D82004F8350 /* Base */,
+			);
+			name = "GoogleService-Info.plist";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -383,6 +463,7 @@
 		};
 		2AB2267325DEBDD2004F8350 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4131DE311A7617B71FACF4F /* Pods-AppTrackWildlifeDiseases.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -395,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Shangzheng-Ji.AppTrackWildlifeDiseases";
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppTrackWildlifeDiseases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -404,6 +485,7 @@
 		};
 		2AB2267425DEBDD2004F8350 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C273ED83FC9D5DD9A8D97173 /* Pods-AppTrackWildlifeDiseases.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -416,7 +498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Shangzheng-Ji.AppTrackWildlifeDiseases";
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppTrackWildlifeDiseases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
