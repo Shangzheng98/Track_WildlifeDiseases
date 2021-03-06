@@ -13,7 +13,7 @@ struct Description: View {
         VStack(alignment: .leading) {
             Link(destination:URL(string:webpageURL)!) {
                 Text("Project Descrition")
-                    .font(.title)
+                    .font(.title2)
                     .multilineTextAlignment(.leading)
                     .padding(.bottom)
             }

@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        // Get the managed object context from the shared persistent container.
+//        // Get the managed object context from the shared persistent container.
 //        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 //
 //        // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
@@ -28,8 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
+            let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
             window.rootViewController = UIHostingController(rootView: ContentView()
                                                                 .environmentObject(UserData())
+                                                                .environment(\.managedObjectContext, managedObjectContext)
             )
             self.window = window
             window.makeKeyAndVisible()

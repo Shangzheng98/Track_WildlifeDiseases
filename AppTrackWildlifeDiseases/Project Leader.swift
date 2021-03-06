@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-let contents = ["D.V.M., Universidad de San Carlos, Guatemala City, Guatemala (Avian Flu in Wild Birds) (2009)\n", "M.Sc., Wildlife Management, Universidad de San Carlos, Guatemala City, Guatemala (Community Ecology of Fleas in Guatemala) (2011)","M.Sc., Veterinary Sciences, Universidad Andres Bello, College of Ecology and Natural Resources, Chile (2012)","Ph.D., Conservation Medicine (Summa Cum Laude), Universidad Andres Bello, College of Ecology and Natural Resources, Chile (Ecology and Biogeography of Bat-borne Rabies) (2014)"]
+
 
 
 struct ProjectLeader: View {
@@ -22,13 +22,14 @@ struct ProjectLeader: View {
             HStack() {
                 Image("profile")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
                 VStack(alignment: .leading) {
                     Text("Luis E. Escobar")
-                        .font(.title)
-                    Text("Asst Professor AY")
                         .font(.title2)
+                    Text("Asst Professor AY")
+                        .font(.title3)
                     
                     HStack {
                         Image(systemName: "envelope")
@@ -36,6 +37,7 @@ struct ProjectLeader: View {
                     }
                         
                 }
+                .padding(.trailing)
             }
             Divider()
             Group {
@@ -47,14 +49,15 @@ struct ProjectLeader: View {
                 Divider()
                 Text(contents[3])
             }
-            .font(.body)
+            .font(.system(size: 15))
+            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             .multilineTextAlignment(.leading)
             
             
                 
         }
-        .padding(.leading)
-        .frame(maxHeight: 400.0)
+        .padding([.leading,.bottom])
+        
         
     }
 }

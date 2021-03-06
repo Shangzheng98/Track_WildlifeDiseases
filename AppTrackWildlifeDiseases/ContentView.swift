@@ -20,7 +20,13 @@ struct ContentView: View {
                     Image(systemName: "camera.fill")
                     Text("Upload")
                 }
+            HistoryView()
+                .tabItem{
+                    Image(systemName: "doc.on.doc")
+                    Text("History")
+                }
         }
+        .accentColor(Color("Burnt Orange"))
 
     }
 }

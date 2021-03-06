@@ -9,7 +9,7 @@ import Foundation
 
 
 public let descriptionContent = "COVID-19 and many other emerging diseases, such as Ebola and the avian flue, have origins in wildlife. Thus, it is crucial to monitor wildlife diseases. However, this is expensive and time consuming, and the diseases could emerge in areas without monitoring. Citizen science bring an opportunity for early detection of wildlife diseases. This project will focus on the development of an app, freely available to the public, to track mange, an infectious disease in wildlife that is easy to detect by non-experts. Mange is spreading globally and Virginia has an ongoing epidemic in bears. Thus, this disease is a great model to implement the app, which can be expanded to other diseases in the future."
-
+public let contents = ["D.V.M., Universidad de San Carlos, Guatemala City, Guatemala (Avian Flu in Wild Birds) (2009)\n", "M.Sc., Wildlife Management, Universidad de San Carlos, Guatemala City, Guatemala (Community Ecology of Fleas in Guatemala) (2011)","M.Sc., Veterinary Sciences, Universidad Andres Bello, College of Ecology and Natural Resources, Chile (2012)","Ph.D., Conservation Medicine (Summa Cum Laude), Universidad Andres Bello, College of Ecology and Natural Resources, Chile (Ecology and Biogeography of Bat-borne Rabies) (2014)"]
 public let email = "escobar1@vt.edu"
 
 public let profileURL = "https://fishwild.vt.edu/faculty/escobar.html"

@@ -9,23 +9,32 @@ import SwiftUI
 
 struct AboutUs: View {
     @EnvironmentObject var userData: UserData
-    
+    init() {
+        let navBarAppearance = UINavigationBarAppearance()
+//        navBarAppearance.setBackIndicatorImage(UIImage(systemName: "backward.fill")!, transitionMaskImage: UIImage(systemName: "backward")!)
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor(Color("Burnt Orange"))
+        ]
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor(Color("Burnt Orange"))
+        ]
+        
+//        navBarAppearance.configureWithTransparentBackground()
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+    }
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    Description()
-                        .padding(.bottom)
-                    ProjectLeader()
-                        .padding([.bottom, .top])
-                    
-                    if userData.networkStatus != "offline" {
-                        MangeDescription()
-                        }
-                    }
+        
+            List {
+                Description()
+                    .padding(.bottom)
+                ProjectLeader()
+                    .padding([.bottom, .top])
                 
-            }
-            .navigationBarTitle(Text("About Us"))
+                if userData.networkStatus != "offline" {
+                    MangeDescription()
+                    }
+            }.navigationTitle(Text("About Us"))
     
             
         }

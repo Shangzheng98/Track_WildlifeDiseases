@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import Firebase
+// Used to connect plugins (only if you have plugins with iOS platform code).
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         getPermissionForLocation()
         FirebaseApp.configure()
+        
         getNetWorkStatus()
         return true
     }
