@@ -9,17 +9,28 @@ import SwiftUI
 struct MangeDescription: View {
     var body: some View {
         VStack(alignment:.leading) {
-            Link(destination: URL(string: "https://en.wikipedia.org/wiki/Mange")!) {
-                Text("Mange")
-                    .font(.title)
-                    .multilineTextAlignment(.leading)
-                    .padding(.bottom)
-            }
             
+            HStack {
+                Image(systemName: "square.fill")
+                    .foregroundColor(Color("Chicago Maroon"))
+                Text("Mange")
+                    .font(.title2)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.black)
+                Link(destination: URL(string: "https://en.wikipedia.org/wiki/Mange")!) {
+                    Image(systemName: "globe")
+                        .foregroundColor(.blue)
+                        .imageScale(.small)
+                }
+
+            }
+            .padding(.bottom)
+                        
             
             Text(mangeDescription)
                 .multilineTextAlignment(.leading)
         }
+        .padding(.leading)
     }
     
     

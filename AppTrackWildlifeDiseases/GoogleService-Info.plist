@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>703120852758-7af4so20edv69s1u4nd730g3d81m1c7d.apps.googleusercontent.com</string>
+	<string>703120852758-gvssh17fot0i3e7edqiru6os4vhdgi3k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.703120852758-7af4so20edv69s1u4nd730g3d81m1c7d</string>
+	<string>com.googleusercontent.apps.703120852758-gvssh17fot0i3e7edqiru6os4vhdgi3k</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCWBjPsTtOmjBV_2-Kr4cBuMAH151LshxI</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Team1.TrackWildLifeDiseases</string>
+	<string>com.team1.TrackWildLifeDiseases</string>
 	<key>PROJECT_ID</key>
 	<string>apptrackwildlifediseases-388bf</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:703120852758:ios:02f5094094e648c7abb237</string>
+	<string>1:703120852758:ios:734d424d1b4f7c19abb237</string>
 	<key>DATABASE_URL</key>
 	<string>https://apptrackwildlifediseases-388bf-default-rtdb.firebaseio.com</string>
 </dict>

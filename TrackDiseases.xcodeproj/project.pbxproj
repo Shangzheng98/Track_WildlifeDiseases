@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		21957F6CC66555DD41C8D74F /* Pods_TrackDiseases.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B879A8B09CE4CE176907B5 /* Pods_TrackDiseases.framework */; };
-		2A41404A25F1D7D500F31F9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A41404925F1D7D500F31F9B /* GoogleService-Info.plist */; };
+		2A1BD13D25F7DF0300A2E8ED /* choiceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */; };
+		2A1BD14125F7EA3600A2E8ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */; };
 		2A41408B25F22E9600F31F9B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A41408A25F22E9600F31F9B /* Launch Screen.storyboard */; };
 		2AB2265F25DEBDCF004F8350 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2265E25DEBDCF004F8350 /* AppDelegate.swift */; };
 		2AB2266125DEBDCF004F8350 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2266025DEBDCF004F8350 /* SceneDelegate.swift */; };
@@ -38,7 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A41404925F1D7D500F31F9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = choiceStruct.swift; sourceTree = "<group>"; };
+		2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A41408A25F22E9600F31F9B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2AB2265B25DEBDCF004F8350 /* TrackDiseases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackDiseases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB2265E25DEBDCF004F8350 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,7 +128,7 @@
 				2AB2266225DEBDCF004F8350 /* ContentView.swift */,
 				2AB2266725DEBDD2004F8350 /* Assets.xcassets */,
 				2AB2266F25DEBDD2004F8350 /* Info.plist */,
-				2A41404925F1D7D500F31F9B /* GoogleService-Info.plist */,
+				2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */,
 				2AB2266425DEBDCF004F8350 /* AppTrackWildlifeDiseases.xcdatamodeld */,
 				2AB2266925DEBDD2004F8350 /* Preview Content */,
 				2AB2268325DED8D1004F8350 /* Common Source.swift */,
@@ -146,8 +148,8 @@
 		2AB2267625DECD4A004F8350 /* About us */ = {
 			isa = PBXGroup;
 			children = (
-				2AB2267725DECD84004F8350 /* Description.swift */,
 				2AB2268625DEDD7A004F8350 /* AboutUs.swift */,
+				2AB2267725DECD84004F8350 /* Description.swift */,
 				2AB2268B25DEE451004F8350 /* Project Leader.swift */,
 				2AB2269325E4E31D004F8350 /* MangeDescription.swift */,
 			);
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB2267B25DECDBF004F8350 /* PictureTakeing.swift */,
+				2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */,
 			);
 			name = "Upload Case";
 			sourceTree = "<group>";
@@ -279,9 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB2266B25DEBDD2004F8350 /* Preview Assets.xcassets in Resources */,
-				2A41404A25F1D7D500F31F9B /* GoogleService-Info.plist in Resources */,
 				2A41408B25F22E9600F31F9B /* Launch Screen.storyboard in Resources */,
 				2AB2266825DEBDD2004F8350 /* Assets.xcassets in Resources */,
+				2A1BD14125F7EA3600A2E8ED /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +342,7 @@
 				2AB2269425E4E31D004F8350 /* MangeDescription.swift in Sources */,
 				2AB2269E25E551A3004F8350 /* UserData.swift in Sources */,
 				2AB2271525E6AC3B004F8350 /* ListItem.swift in Sources */,
+				2A1BD13D25F7DF0300A2E8ED /* choiceStruct.swift in Sources */,
 				2AB2265F25DEBDCF004F8350 /* AppDelegate.swift in Sources */,
 				2AB2271A25E77A94004F8350 /* UploadToStorage.swift in Sources */,
 				2AB2270E25E67011004F8350 /* Photo.swift in Sources */,

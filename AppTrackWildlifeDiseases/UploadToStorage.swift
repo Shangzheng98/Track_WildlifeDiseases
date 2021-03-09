@@ -7,28 +7,28 @@
 
 import Foundation
 import Firebase
-public func uploadToStorageAndDataBase(record:Record) -> Bool{
+public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
     let storagerRef = Storage.storage().reference()
     let imageRef = storagerRef.child("Mange/\(UUID().uuidString).jpg")
-    let semaphore = DispatchSemaphore(value: 0)
+    //let semaphore = DispatchSemaphore(value: 0)
     let uploadTask = imageRef.putData(record.photo!.photo!, metadata: nil) { (metadata, err) in
         
         if let error = err {
             print(error.localizedDescription)
-            semaphore.signal()
+            //semaphore.signal()
             return
         }
       // You can also access to download URL after upload.
         imageRef.downloadURL { (url, error) in
             if let error = err {
                 print(error.localizedDescription)
-                semaphore.signal()
+                //semaphore.signal()
                 return
             }
             
             guard let url = url  else {
                 print("the url is wroing")
-                semaphore.signal()
+                //semaphore.signal()
                 return
                 
             }
@@ -43,19 +43,19 @@ public func uploadToStorageAndDataBase(record:Record) -> Bool{
             documentRef.setData(data,completion: { (err) in
                 if let err = err {
                     print("error: \(err.localizedDescription)")
-                    semaphore.signal()
+                    //semaphore.signal()
                     return
                 } else {
                     print("successful saved")
                 }
-                
+                //semaphore.signal()
             })
       }
         
-        semaphore.signal()
+       // semaphore.signal()
         
         
     }
-    _ =  semaphore.wait(timeout: .now() + 10)
-    return true
+    //_ =  semaphore.wait(timeout: .now() + 10)
+    return uploadTask
 }

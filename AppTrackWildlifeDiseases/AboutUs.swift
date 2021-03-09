@@ -24,21 +24,22 @@ struct AboutUs: View {
     }
     var body: some View {
         NavigationView {
-        
-            List {
-                Description()
-                    .padding(.bottom)
-                ProjectLeader()
-                    .padding([.bottom, .top])
-                
-                if userData.networkStatus != "offline" {
-                    MangeDescription()
-                    }
-            }.navigationTitle(Text("About Us"))
-    
-            
+            ScrollView {
+                VStack {
+                    Description()
+                        .padding(.bottom)
+                    ProjectLeader()
+                        .padding([.bottom, .top])
+                    
+                    if userData.networkStatus != "offline" {
+                        MangeDescription()
+                        }
+                }
+                .navigationTitle(Text("About Us"))
+            }
         }
         
+    
     }
     
 }
