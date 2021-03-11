@@ -16,6 +16,7 @@ public class Record: NSManagedObject, Identifiable {
     @NSManaged public var latitude:NSNumber?
     @NSManaged public var longitude:NSNumber?
     @NSManaged public var photo: Photo?
+    @NSManaged public var uploadStatus:String?
 }
 
 

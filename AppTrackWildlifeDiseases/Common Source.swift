@@ -23,3 +23,5 @@ public let mangeWikipediaURL = "https://en.wikipedia.org/wiki/Mange"
 public var netWorkStatus = "offline"
 
 public var mangeDescription = "Mange is a type of skin disease caused by parasitic mites.Because mites also infect plants, birds, and reptiles, the term \"mange\" or colloquially \"the mange\", suggesting poor condition of the hairy coat due to the infection, is sometimes reserved only for pathological mite-infestation of nonhuman mammals. Thus, mange includes mite-associated skin disease in domestic animals (cats and dogs), in livestock (such as sheep scab), and in wild animals (for example, coyotes, cougars, and bears). Since mites belong to the arachnid subclass Acari (also called Acarina), another term for mite infestation is acariasis.Parasitic mites that cause mange in mammals embed themselves in either skin or hair follicles in the animal, depending upon their genus. Sarcoptes spp. burrow into skin, while Demodex spp. live in follicles."
+
+public let question = "How much you know about mange?"

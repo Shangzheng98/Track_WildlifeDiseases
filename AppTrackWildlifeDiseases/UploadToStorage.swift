@@ -14,14 +14,14 @@ public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
     let uploadTask = imageRef.putData(record.photo!.photo!, metadata: nil) { (metadata, err) in
         
         if let error = err {
-            print(error.localizedDescription)
+            print("error: \(error.localizedDescription)")
             //semaphore.signal()
             return
         }
       // You can also access to download URL after upload.
         imageRef.downloadURL { (url, error) in
             if let error = err {
-                print(error.localizedDescription)
+                print("error: \(error.localizedDescription)")
                 //semaphore.signal()
                 return
             }
@@ -45,8 +45,6 @@ public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
                     print("error: \(err.localizedDescription)")
                     //semaphore.signal()
                     return
-                } else {
-                    print("successful saved")
                 }
                 //semaphore.signal()
             })

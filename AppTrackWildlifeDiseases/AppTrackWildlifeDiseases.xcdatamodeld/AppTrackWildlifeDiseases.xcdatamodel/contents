@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Photo" representedClassName=".Photo" syncable="YES">
         <attribute name="photo" optional="YES" attributeType="Binary"/>
         <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Record" inverseName="photo" inverseEntity="Record"/>
@@ -10,11 +10,12 @@
         <attribute name="information" optional="YES" attributeType="String"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="uploadStatus" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="String"/>
         <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="record" inverseEntity="Photo"/>
     </entity>
     <elements>
         <element name="Photo" positionX="344.8291015625" positionY="-17.82266235351562" width="128" height="28"/>
-        <element name="Record" positionX="-83.63433837890625" positionY="-103.2030334472656" width="128" height="134"/>
+        <element name="Record" positionX="-83.63433837890625" positionY="-103.2030334472656" width="128" height="149"/>
     </elements>
 </model>
