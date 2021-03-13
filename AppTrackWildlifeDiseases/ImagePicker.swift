@@ -28,7 +28,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage
     @Binding var isImageSelected: Bool
     @Environment(\.presentationMode) private var presentationMode
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    var sourceType: UIImagePickerController.SourceType
   
 //    func makeCoordinator() -> ImagePickerCoordinator {
 //        return ImagePickerCoordinator(imagePickerShown: $imagePickerShown, photoImageData: $photoImageData)
@@ -72,6 +72,9 @@ struct ImagePicker: UIViewControllerRepresentable {
             } else {
                 parent.selectedImage = UIImage()
                 return
+            }
+            if parent.sourceType == .camera {
+                UIImageWriteToSavedPhotosAlbum(parent.selectedImage, nil, nil, nil)
             }
             parent.isImageSelected = true
             parent.presentationMode.wrappedValue.dismiss()
