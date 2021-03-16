@@ -7,10 +7,9 @@
 
 import Foundation
 import SystemConfiguration
-
+import SwiftUI
 
 let ReachabilityStatusChangedNotification = "ReachabilityStatusChangedNotification"
-
 enum ReachabilityType: CustomStringConvertible {
     case wwan
     case wiFi

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PhotosUI
 // Global variable
 //var pickedImage = UIImage()
 
@@ -67,6 +68,7 @@ struct ImagePicker: UIViewControllerRepresentable {
           
             if let editedImage = info[.editedImage] as? UIImage {
                 parent.selectedImage = editedImage
+                
             } else if let originalImage = info[.originalImage] as? UIImage {
                 parent.selectedImage = originalImage
             } else {
@@ -75,6 +77,7 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
             if parent.sourceType == .camera {
                 UIImageWriteToSavedPhotosAlbum(parent.selectedImage, nil, nil, nil)
+                
             }
             parent.isImageSelected = true
             parent.presentationMode.wrappedValue.dismiss()
@@ -108,6 +111,68 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
       
     }
+}
+
+struct LibraryImagePicker: UIViewControllerRepresentable {
+    @Binding var selectedImage: UIImage
+    @Binding var date: Date
+    @Binding var location: CLLocationCoordinate2D
+    
+    @Environment(\.presentationMode) var presentationMode
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+        config.filter = .images
+        config.selectionLimit = 1
+        let controller = PHPickerViewController(configuration: config)
+        controller.delegate = context.coordinator
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
+        
+    }
+    
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
+    class Coordinator: PHPickerViewControllerDelegate {
+            func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+                parent.presentationMode.wrappedValue.dismiss()
+                guard !results.isEmpty else {
+                    return
+                }
+                
+                let imageResult = results[0]
+                
+                if let assetId = imageResult.assetIdentifier {
+                    let assetResults = PHAsset.fetchAssets(withLocalIdentifiers: [assetId], options: nil)
+                    DispatchQueue.main.async {
+                        self.parent.date = (assetResults.firstObject?.creationDate) ?? Date()
+                        if let coordinate  = assetResults.firstObject?.location?.coordinate {
+                            self.parent.location = coordinate
+                        }
+                    }
+                }
+                if imageResult.itemProvider.canLoadObject(ofClass: UIImage.self) {
+                    imageResult.itemProvider.loadObject(ofClass: UIImage.self) { (selectedImage, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            DispatchQueue.main.async {
+                                self.parent.selectedImage = (selectedImage as? UIImage)!
+                            }
+                        }
+                    }
+                }
+            }
+            
+            private let parent: LibraryImagePicker
+            init(_ parent: LibraryImagePicker) {
+                self.parent = parent
+            }
+        }
 }
  
 /*

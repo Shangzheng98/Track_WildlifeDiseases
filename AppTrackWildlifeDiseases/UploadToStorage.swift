@@ -8,20 +8,25 @@
 import Foundation
 import Firebase
 public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
-    let storagerRef = Storage.storage().reference()
+    let storager = Storage.storage()
+    storager.maxUploadRetryTime = 5
+    storager.maxOperationRetryTime = 5
+    storager.maxDownloadRetryTime = 5
+    let storagerRef = storager.reference()
+    
     let imageRef = storagerRef.child("Mange/\(UUID().uuidString).jpg")
     //let semaphore = DispatchSemaphore(value: 0)
     let uploadTask = imageRef.putData(record.photo!.photo!, metadata: nil) { (metadata, err) in
         
-        if let error = err {
-            print("error: \(error.localizedDescription)")
+        if err != nil {
+            print("the url is wroing")
             //semaphore.signal()
             return
         }
       // You can also access to download URL after upload.
         imageRef.downloadURL { (url, error) in
-            if let error = err {
-                print("error: \(error.localizedDescription)")
+            if err != nil {
+                print("the url is wroing")
                 //semaphore.signal()
                 return
             }
@@ -41,8 +46,8 @@ public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
                         "Choice": record.choice!,
                         "uuid": record.uuid!]
             documentRef.setData(data,completion: { (err) in
-                if let err = err {
-                    print("error: \(err.localizedDescription)")
+                if err != nil {
+                    print("the url is wroing")
                     //semaphore.signal()
                     return
                 }

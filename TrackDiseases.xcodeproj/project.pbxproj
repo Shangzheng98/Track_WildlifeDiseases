@@ -11,6 +11,7 @@
 		2A1BD13D25F7DF0300A2E8ED /* choiceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */; };
 		2A1BD14125F7EA3600A2E8ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */; };
 		2A41408B25F22E9600F31F9B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A41408A25F22E9600F31F9B /* Launch Screen.storyboard */; };
+		2A8D058E2600937E006C18F5 /* DragableAnnotationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D058D2600937E006C18F5 /* DragableAnnotationMap.swift */; };
 		2AB2265F25DEBDCF004F8350 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2265E25DEBDCF004F8350 /* AppDelegate.swift */; };
 		2AB2266125DEBDCF004F8350 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2266025DEBDCF004F8350 /* SceneDelegate.swift */; };
 		2AB2266325DEBDCF004F8350 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2266225DEBDCF004F8350 /* ContentView.swift */; };
@@ -41,6 +42,7 @@
 		2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = choiceStruct.swift; sourceTree = "<group>"; };
 		2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A41408A25F22E9600F31F9B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		2A8D058D2600937E006C18F5 /* DragableAnnotationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableAnnotationMap.swift; sourceTree = "<group>"; };
 		2AB2265B25DEBDCF004F8350 /* TrackDiseases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackDiseases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB2265E25DEBDCF004F8350 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AB2266025DEBDCF004F8350 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				2AB2269D25E551A3004F8350 /* UserData.swift */,
 				2AB226A425E57FFA004F8350 /* UtilityFunction.swift */,
 				2AB226A725E5855A004F8350 /* GeoInformation.swift */,
+				2A8D058D2600937E006C18F5 /* DragableAnnotationMap.swift */,
 			);
 			name = UtilitFunctions;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				2AB226A525E57FFA004F8350 /* UtilityFunction.swift in Sources */,
 				2AB2270925E66AC3004F8350 /* Record.swift in Sources */,
 				2AB2269025E4DF6E004F8350 /* ImagePicker.swift in Sources */,
+				2A8D058E2600937E006C18F5 /* DragableAnnotationMap.swift in Sources */,
 				2AB2266325DEBDCF004F8350 /* ContentView.swift in Sources */,
 				2AB2268C25DEE451004F8350 /* Project Leader.swift in Sources */,
 				2AB2269825E4E4C6004F8350 /* WebView.swift in Sources */,

@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import Combine
 import UIKit
+import MapKit
 struct PictureTakeing: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @State private var photoImageData: Data? = nil
@@ -18,7 +19,7 @@ struct PictureTakeing: View {
     @State private var date = Date()
     @State private var showActionSheet = false
     @State private var pickedAnswerIndex = -1
-    
+    @State private var showSaveErrorAlert = false
     @State private var choices:[Choice] = [Choice(name: "expert"),
                                            Choice(name: "mediem"),
                                            Choice(name: "poor")]
@@ -31,6 +32,10 @@ struct PictureTakeing: View {
     @State private var isImageSelected = false
     @State private var choiceOnce = 0
     @State private var keyboardHeight:CGFloat = 0
+    private let center = currentLocation()
+    @State private var photoLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    @State private var sourceType:String = "camera"
+    
     var dateClosedRange: ClosedRange<Date> {
         // Set minimum date to 20 years earlier than the current year
         let minDate = Calendar.current.date(byAdding: .year, value: -20, to: Date())!
@@ -39,6 +44,7 @@ struct PictureTakeing: View {
         let maxDate = Calendar.current.date(byAdding: .year, value: 2, to: Date())!
         return minDate...maxDate
     }
+    
     
     var body: some View {
         NavigationView {
@@ -150,9 +156,26 @@ struct PictureTakeing: View {
                                 
                         }
                         
+                        
+                        
                     }
+                    
+                    
+                }
+                .alert(isPresented: self.$showSaveErrorAlert) {
+                    saveFailAlert
                 }
                 
+                if self.sourceType == "library" {
+                    Section(header: Text("Choose a location for the Image")) {
+                        NavigationLink(destination:mapView(latitude: $photoLocation.latitude, longtitude: $photoLocation.longitude, locationLat: center.latitude, locationLong: center.longitude)) {
+                            Text("Select a location")
+                            
+                        }
+                        
+                        Text("Lat: \(formatter(number: Double(photoLocation.latitude))) Long: \(formatter(number: Double(photoLocation.longitude)))")
+                    }
+                }
                 
 
             }
@@ -162,8 +185,12 @@ struct PictureTakeing: View {
             }
             .actionSheet(isPresented: self.$showActionSheet) {
                 ActionSheet(title: Text("Pick a picture"), buttons: [
-                                .default(Text("Camera")){self.showCameraImagePicker = true},
-                                .default(Text("Photo Library")){self.showLibraryImagePicker = true},
+                                .default(Text("Camera")){self.showCameraImagePicker = true
+                                    self.sourceType = "camera"
+                                },
+                                .default(Text("Photo Library")){self.showLibraryImagePicker = true
+                                    self.sourceType = "library"
+                                },
                                 .cancel()
                 ])
             }
@@ -176,6 +203,7 @@ struct PictureTakeing: View {
                 save()
             }){
                 Text("Save")
+                
             })
             
             
@@ -185,10 +213,19 @@ struct PictureTakeing: View {
     }
     
     var saveSuccessAlert:Alert {
-        Alert(title: Text("record Uploaded!"), message:Text("the record has uploaded successfully!"), dismissButton: .default(Text("OK")))
+        Alert(title: Text("Record Uploaded!"), message:Text("The record has uploaded successfully!"), dismissButton: .default(Text("OK")))
     }
     
-    
+    var saveFailAlert:Alert {
+        Alert(title: Text("Record Upload failed"), message: Text("The record uploaded failed because of bad internet quality, you can upload late"), dismissButton: .default(Text("OK")))
+    }
+    func formatter(number: Double) -> String
+    {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let n = Double(number)
+        return formatter.string(from: NSNumber(value: n)) ?? "$0"
+    }
     func save() {
 //        if self.photoImageData == nil {
 //            showNoImageAlert = true
@@ -196,100 +233,82 @@ struct PictureTakeing: View {
 //        }
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = dateFormatter.string(from: self.date)
         let location = currentLocation()
         let newRecord = Record(context: self.managedObjectContext)
         newRecord.date = dateString
         newRecord.information = self.contactInformation
         newRecord.choice = pickedAnswerIndex == -1 ? "" : self.choices[pickedAnswerIndex].name
-        newRecord.latitude = NSNumber(value: location.latitude)
-        newRecord.longitude = NSNumber(value: location.longitude)
+        if self.sourceType == "camera" {
+            newRecord.latitude = NSNumber(value: location.latitude)
+            newRecord.longitude = NSNumber(value: location.longitude)
+
+        } else {
+            newRecord.latitude = NSNumber(value: photoLocation.latitude)
+            newRecord.longitude = NSNumber(value: photoLocation.longitude)
+        }
+                
         newRecord.uuid = UUID().uuidString
         
         let newPhoto = Photo(context: self.managedObjectContext)
-//        if let imageData = self.photoImageData {
-//            newPhoto.photo = imageData
-//        } else {
-//            let photoUIImage = UIImage(named: "imageUnavailable")
-//
-//            // Convert photoUIImage to data of type Data (Binary Data) in JPEG format with 100% quality
-//            let photoData = photoUIImage?.jpegData(compressionQuality: 1.0)
-//
-//            // Assign photoData to Core Data entity attribute of type Data (Binary Data)
-//            newPhoto.photo = photoData!
-//        }
         var  photoData:Data
         if self.isImageSelected {
             photoData = image.jpegData(compressionQuality: 0.8)!
             newPhoto.photo = photoData
         } else {
-            let photoUIImage = UIImage(named: "imageUnavailable")
+            let photoUIImage = UIImage(named: "ImageUnavailable")
             photoData = (photoUIImage?.jpegData(compressionQuality: 0.8))!
             newPhoto.photo = photoData
         }
         newPhoto.record = newRecord
         newRecord.photo = newPhoto
         
-         do {
+         
             
-            let uploadTask = uploadToStorageAndDataBase(record:newRecord)
-            uploadTask.observe(.progress) {
-                snapshot in
-                percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
-                    / Double(snapshot.progress!.totalUnitCount)
-                print("\(percentComplete)")
-            }
-            uploadTask.observe(.success) { snapshot in
-              // Upload completed successfully
-                showSaveSuccessAlert = true
-                uploadTask.removeAllObservers()
-                print("uploadTask.observe(.success) called")
-                newRecord.uploadStatus = "success"
-                
-            }
-            
-            uploadTask.observe(.pause) {
-                snapshot in
-                print(" upload task is paused!")
-                newRecord.uploadStatus = "pause"
+        let uploadTask = uploadToStorageAndDataBase(record:newRecord)
+        uploadTask.observe(.progress) {
+            snapshot in
+            percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                / Double(snapshot.progress!.totalUnitCount)
+        }
+        uploadTask.observe(.success) { snapshot in
+          // Upload completed successfully
+            showSaveSuccessAlert = true
+            uploadTask.removeAllObservers()
+            print("uploadTask.observe(.success) called")
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                print("something wrong")
+                return
             }
             
-            uploadTask.observe(.resume) {
-                snap in
-                print("upload task is resumed!")
-            }
-            uploadTask.observe(.failure) { snapshot in
-                if let error = snapshot.error as? NSError {
-                    switch (StorageErrorCode(rawValue: error.code)!) {
-                    case .objectNotFound:
-                      // File doesn't exist
-                      break
-                    case .unauthorized:
-                      // User doesn't have permission to access file
-                      break
-                    case .cancelled:
-                      // User canceled the upload
-                      break
+            
+        }
+        
+        uploadTask.observe(.failure) { snapshot in
+            if let error = snapshot.error as NSError? {
+                switch (StorageErrorCode(rawValue: error.code)!) {
 
-                    /* ... */
-
-                    case .unknown:
-                      // Unknown error occurred, inspect the server response
-                      break
-                    default:
-                      // A separate error occurred. This is a good place to retry the upload.
-                        
-                      break
+                case .unknown:
+                  // Unknown error occurred, inspect the server response
+                    do  {
+                        //try self.managedObjectContext.save()
+                        uploadTask.cancel()
+                        uploadTask.removeAllObservers()
+                        self.showSaveErrorAlert = true
+                        print("unknown error")
                     }
-                  }
-            }
-            
-            try self.managedObjectContext.save()
-         } catch {
-            print("something wrong!")
-             return
-         }
+
+                  break
+                default:
+                  // A separate error occurred. This is a good place to retry the upload.
+                    
+                  break
+                }
+              }
+        }
         //self.showSaveSuccessAlert = true
     }
     
