@@ -97,9 +97,9 @@ extension ReachabilityStatus {
     }
 }
 
-
+let re = Reach()
 public func getNetWorkStatus() {
-    let status = Reach().connectionStatus()
+    let status = re.connectionStatus()
     
     switch status {
     case .unknown, .offline:

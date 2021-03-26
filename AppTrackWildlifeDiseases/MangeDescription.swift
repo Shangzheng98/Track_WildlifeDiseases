@@ -7,6 +7,7 @@
 
 import SwiftUI
 struct MangeDescription: View {
+    
     var body: some View {
         VStack(alignment:.leading) {
             

@@ -31,13 +31,19 @@ struct AboutUs: View {
                     ProjectLeader()
                         .padding([.bottom, .top])
                     
-                    if userData.networkStatus != "offline" {
-                        MangeDescription()
-                        }
+                
+                    MangeDescription()
+                        
+                    
+                    
                 }
                 .navigationTitle(Text("About Us"))
             }
         }
+        .onAppear{
+            getNetWorkStatus()
+            userData.networkStatus = netWorkStatus
+            }
         
     
     }
@@ -47,5 +53,6 @@ struct AboutUs: View {
 struct AboutUs_Previews: PreviewProvider {
     static var previews: some View {
         AboutUs()
+        
     }
 }

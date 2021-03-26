@@ -1,0 +1,13 @@
+{
+    "projectWebsit": "https://apptrackwildlifediseases-388bf.web.app",
+    "quesitons": [
+        "How much you know about mange?"
+    ],
+    "choiceSets": [
+        [
+            "expert",
+            "mediem",
+            "poor"
+        ]
+    ]
+}

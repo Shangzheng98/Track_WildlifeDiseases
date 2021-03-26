@@ -61,19 +61,11 @@ struct ProjectLeader: View {
                 
             }
             Divider()
-//            Group {
-//
-//                Divider()
-//                Text(contents[1])
-//                Divider()
-//                Text(contents[2])
-//                Divider()
-//                Text(contents[3])
-//            }
+
             
             
             Group {
-                ForEach(contents,id: \.self) {
+                ForEach(achievements,id: \.self) {
                     item in
                     Text(item)
                     Divider()

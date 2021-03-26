@@ -17,7 +17,7 @@ struct ContentView: View {
                 }
             PictureTakeing()
                 .tabItem {
-                    Image(systemName: "camera.fill")
+                    Image(systemName: "arrow.up")
                     Text("Upload")
                 }
             HistoryView()

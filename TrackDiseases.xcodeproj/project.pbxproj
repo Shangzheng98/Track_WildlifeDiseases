@@ -11,7 +11,11 @@
 		2A1BD13D25F7DF0300A2E8ED /* choiceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */; };
 		2A1BD14125F7EA3600A2E8ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */; };
 		2A41408B25F22E9600F31F9B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A41408A25F22E9600F31F9B /* Launch Screen.storyboard */; };
-		2A8D058E2600937E006C18F5 /* DragableAnnotationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D058D2600937E006C18F5 /* DragableAnnotationMap.swift */; };
+		2A4E0D52260DC54600279F20 /* mange.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A4E0D51260DC54600279F20 /* mange.json */; };
+		2A4E0D56260DC69D00279F20 /* profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A4E0D55260DC69D00279F20 /* profile.json */; };
+		2A4E0D59260DC8EF00279F20 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A4E0D58260DC8EF00279F20 /* project.json */; };
+		2A4E0D5C260DC95000279F20 /* ReadFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4E0D5B260DC95000279F20 /* ReadFiles.swift */; };
+		2A8D058E2600937E006C18F5 /* DraggableAnnotationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D058D2600937E006C18F5 /* DraggableAnnotationMap.swift */; };
 		2AB2265F25DEBDCF004F8350 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2265E25DEBDCF004F8350 /* AppDelegate.swift */; };
 		2AB2266125DEBDCF004F8350 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2266025DEBDCF004F8350 /* SceneDelegate.swift */; };
 		2AB2266325DEBDCF004F8350 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2266225DEBDCF004F8350 /* ContentView.swift */; };
@@ -35,14 +39,18 @@
 		2AB2270E25E67011004F8350 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2270D25E67011004F8350 /* Photo.swift */; };
 		2AB2271225E6AC1D004F8350 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2271125E6AC1D004F8350 /* History.swift */; };
 		2AB2271525E6AC3B004F8350 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2271425E6AC3B004F8350 /* ListItem.swift */; };
-		2AB2271A25E77A94004F8350 /* UploadToStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2271925E77A94004F8350 /* UploadToStorage.swift */; };
+		2AB2271A25E77A94004F8350 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2271925E77A94004F8350 /* Firebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = choiceStruct.swift; sourceTree = "<group>"; };
 		2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A41408A25F22E9600F31F9B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		2A8D058D2600937E006C18F5 /* DragableAnnotationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableAnnotationMap.swift; sourceTree = "<group>"; };
+		2A4E0D51260DC54600279F20 /* mange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mange.json; sourceTree = "<group>"; };
+		2A4E0D55260DC69D00279F20 /* profile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profile.json; sourceTree = "<group>"; };
+		2A4E0D58260DC8EF00279F20 /* project.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = project.json; sourceTree = "<group>"; };
+		2A4E0D5B260DC95000279F20 /* ReadFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadFiles.swift; sourceTree = "<group>"; };
+		2A8D058D2600937E006C18F5 /* DraggableAnnotationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableAnnotationMap.swift; sourceTree = "<group>"; };
 		2AB2265B25DEBDCF004F8350 /* TrackDiseases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackDiseases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB2265E25DEBDCF004F8350 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AB2266025DEBDCF004F8350 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +76,7 @@
 		2AB2270D25E67011004F8350 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		2AB2271125E6AC1D004F8350 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		2AB2271425E6AC3B004F8350 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
-		2AB2271925E77A94004F8350 /* UploadToStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadToStorage.swift; sourceTree = "<group>"; };
+		2AB2271925E77A94004F8350 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		56B879A8B09CE4CE176907B5 /* Pods_TrackDiseases.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackDiseases.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9338ED3C8DBCAF2441A0B4C1 /* Pods-TrackDiseases.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackDiseases.release.xcconfig"; path = "Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases.release.xcconfig"; sourceTree = "<group>"; };
 		E61EEB84C30CB679F4417222 /* Pods-TrackDiseases.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackDiseases.debug.xcconfig"; path = "Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +103,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		2A4E0D54260DC54C00279F20 /* Json File */ = {
+			isa = PBXGroup;
+			children = (
+				2A4E0D58260DC8EF00279F20 /* project.json */,
+				2A4E0D55260DC69D00279F20 /* profile.json */,
+				2A4E0D51260DC54600279F20 /* mange.json */,
+				2A4E0D5B260DC95000279F20 /* ReadFiles.swift */,
+			);
+			name = "Json File";
+			sourceTree = "<group>";
+		};
 		2AB2265225DEBDCF004F8350 = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +135,8 @@
 		2AB2265D25DEBDCF004F8350 /* AppTrackWildlifeDiseases */ = {
 			isa = PBXGroup;
 			children = (
-				2AB2271825E77A76004F8350 /* Upload to back End */,
+				2A4E0D54260DC54C00279F20 /* Json File */,
+				2AB2271825E77A76004F8350 /* Firebase SDK */,
 				2AB2270C25E66FF6004F8350 /* CoreData */,
 				2AB226AA25E58834004F8350 /* Data Model */,
 				2AB2268E25E4DF28004F8350 /* UtilitFunctions */,
@@ -183,7 +203,7 @@
 				2AB2269D25E551A3004F8350 /* UserData.swift */,
 				2AB226A425E57FFA004F8350 /* UtilityFunction.swift */,
 				2AB226A725E5855A004F8350 /* GeoInformation.swift */,
-				2A8D058D2600937E006C18F5 /* DragableAnnotationMap.swift */,
+				2A8D058D2600937E006C18F5 /* DraggableAnnotationMap.swift */,
 			);
 			name = UtilitFunctions;
 			sourceTree = "<group>";
@@ -205,12 +225,12 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		2AB2271825E77A76004F8350 /* Upload to back End */ = {
+		2AB2271825E77A76004F8350 /* Firebase SDK */ = {
 			isa = PBXGroup;
 			children = (
-				2AB2271925E77A94004F8350 /* UploadToStorage.swift */,
+				2AB2271925E77A94004F8350 /* Firebase.swift */,
 			);
-			name = "Upload to back End";
+			name = "Firebase SDK";
 			sourceTree = "<group>";
 		};
 		2B555D2556D02A2241B79BA1 /* Frameworks */ = {
@@ -282,9 +302,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB2266B25DEBDD2004F8350 /* Preview Assets.xcassets in Resources */,
+				2A4E0D52260DC54600279F20 /* mange.json in Resources */,
 				2A41408B25F22E9600F31F9B /* Launch Screen.storyboard in Resources */,
+				2A4E0D56260DC69D00279F20 /* profile.json in Resources */,
 				2AB2266825DEBDD2004F8350 /* Assets.xcassets in Resources */,
 				2A1BD14125F7EA3600A2E8ED /* GoogleService-Info.plist in Resources */,
+				2A4E0D59260DC8EF00279F20 /* project.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,8 +366,9 @@
 				2AB2269E25E551A3004F8350 /* UserData.swift in Sources */,
 				2AB2271525E6AC3B004F8350 /* ListItem.swift in Sources */,
 				2A1BD13D25F7DF0300A2E8ED /* choiceStruct.swift in Sources */,
+				2A4E0D5C260DC95000279F20 /* ReadFiles.swift in Sources */,
 				2AB2265F25DEBDCF004F8350 /* AppDelegate.swift in Sources */,
-				2AB2271A25E77A94004F8350 /* UploadToStorage.swift in Sources */,
+				2AB2271A25E77A94004F8350 /* Firebase.swift in Sources */,
 				2AB2270E25E67011004F8350 /* Photo.swift in Sources */,
 				2AB2268425DED8D1004F8350 /* Common Source.swift in Sources */,
 				2AB2268725DEDD7A004F8350 /* AboutUs.swift in Sources */,
@@ -354,7 +378,7 @@
 				2AB226A525E57FFA004F8350 /* UtilityFunction.swift in Sources */,
 				2AB2270925E66AC3004F8350 /* Record.swift in Sources */,
 				2AB2269025E4DF6E004F8350 /* ImagePicker.swift in Sources */,
-				2A8D058E2600937E006C18F5 /* DragableAnnotationMap.swift in Sources */,
+				2A8D058E2600937E006C18F5 /* DraggableAnnotationMap.swift in Sources */,
 				2AB2266325DEBDCF004F8350 /* ContentView.swift in Sources */,
 				2AB2268C25DEE451004F8350 /* Project Leader.swift in Sources */,
 				2AB2269825E4E4C6004F8350 /* WebView.swift in Sources */,

@@ -12,29 +12,38 @@ import UIKit
 import MapKit
 struct PictureTakeing: View {
     @Environment(\.managedObjectContext) var managedObjectContext
-    @State private var photoImageData: Data? = nil
     @State private var image = UIImage()
+    @EnvironmentObject var userData: UserData
     @State private var showCameraImagePicker = false
     @State private var showLibraryImagePicker = false
-    @State private var date = Date()
-    @State private var showActionSheet = false
-    @State private var pickedAnswerIndex = -1
-    @State private var showSaveErrorAlert = false
-    @State private var choices:[Choice] = [Choice(name: "expert"),
-                                           Choice(name: "mediem"),
-                                           Choice(name: "poor")]
-    
-    @State private var contactInformation = ""
-    
+    @State private var showDublicated = false
+    @State private var showQuesitonTutorial = false
+    @State private var showImagePickerTutorial = false
     @State private var showNoImageAlert = false
     @State private var showSaveSuccessAlert = false
-    @State private var percentComplete:Double = 0.0
+    @State private var showSaveErrorAlert = false
     @State private var isImageSelected = false
+    @State private var showActionSheet = false
+    
+    @State private var date = Date()
+    
+    
+    @State private var pickedAnswerIndex = -1
+//    @State private var choices:[Choice] = [Choice(name: "expert"),
+//                                           Choice(name: "mediem"),
+//                                           Choice(name: "poor")]
+    @State private var choices:[Choice] = choicesList.first!
+    @State private var contactInformation = ""
+    
+    @State private var percentComplete:Double = 0.0
     @State private var choiceOnce = 0
     @State private var keyboardHeight:CGFloat = 0
+    
     private let center = currentLocation()
     @State private var photoLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    
     @State private var sourceType:String = "camera"
+    @State private var previousImage:Data? = nil
     
     var dateClosedRange: ClosedRange<Date> {
         // Set minimum date to 20 years earlier than the current year
@@ -44,60 +53,46 @@ struct PictureTakeing: View {
         let maxDate = Calendar.current.date(byAdding: .year, value: 2, to: Date())!
         return minDate...maxDate
     }
-    
-    
+
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Question").italic(), footer: Text("Slecet one choice")) {
-                    VStack(alignment: .leading) {
-                        Text(question)
-                            .padding(.bottom, 10)
-                        List {
-                            ForEach(0..<choices.count) { index in
-                                HStack {
-                                    Button(action: {
-                                        if choiceOnce == 0 {
-                                            if choiceOnce < 1 {
-                                                choices[index].isSelected = choices[index].isSelected ? false : true
-                                                choiceOnce += 1
-                                                pickedAnswerIndex = index
-                                            }
-                                        } else {
-                                            if choiceOnce > 0 && choices[index].isSelected {
-                                                choiceOnce = 0
-                                                choices[index].isSelected = choices[index].isSelected ? false : true
-                                                pickedAnswerIndex = -1
-                                            }
-                                        }
-                                        
-                                    }) {
-                                        HStack {
-                                            if choices[index].isSelected {
-                                                Image(systemName: "app.fill")
-                                                    .foregroundColor(Color("Chicago Maroon"))
-                                                    .animation(.easeIn)
-                                            } else {
-                                                Image(systemName: "app")
-                                                    .foregroundColor(Color("Chicago Maroon"))
-                                                    .animation(.easeOut)
-                                            }
-                                            
-                                            Text(choices[index].name)
-                                                .foregroundColor(.black)
-                                        }
-                                    }
-                                    .buttonStyle(BorderlessButtonStyle())
-                                }
-                                .padding(.bottom)
+                Section(header: HStack {
+                            Text("Question").italic()
+                            Spacer()
+                            Button(action: {
+                                showQuesitonTutorial = true
+                            }) {
+                                Image(systemName: "questionmark.circle")
+                                    .imageScale(.large)
+                                    .font(.system(size:15))
                             }
-                        }
-                    }
+                            
+                }, footer: Text("Slecet one choice")) {
+                    multiChoice
                 }
-                Section(header: Text("Pick a image")) {
+                .textCase(nil)
+                
+                Section(header: HStack {
+                    Text("Pick Image")
+                    Spacer()
+                    Button(action: {
+                        showImagePickerTutorial = true
+                    }) {
+                        Image(systemName: "questionmark.circle")
+                            .imageScale(.large)
+                            .font(.system(size:15))
+                    }
+                    .sheet(isPresented: self.$showImagePickerTutorial) {
+                        VStack {
+                            Text("You can select image from")
+                                + Text(" Camera").foregroundColor(.red) + Text(" or ") + Text("Photo Libray.").foregroundColor(.red) + Text(" When you pick the image from photo library, you need to select the location by yourself from a slection bar and date picker which will show up after selecting the image.")
+                        
+                        }
+                        .font(.system(size: 30))
+                    }
                     
-//                        Text("using right-up coner icon to add photo")
-//                            .fixedSize(horizontal: true, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                }) {
                         Button(action: {
                             showActionSheet = true
                         }) {
@@ -108,25 +103,25 @@ struct PictureTakeing: View {
                             }
                             else {
                                 ZStack(alignment: .center) {
-                                    Image("Gray Image")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(maxWidth: 180, maxHeight: 180)
-                                        .padding()
+                                    Color.gray.opacity(0.3)
+                                        .frame(width: 150, height: 150,alignment: .center)
+
                                         
                                     Image(systemName: "plus")
                                         .foregroundColor(.gray)
                                     
                                 }
-                                
-
                             }
                         }
-                        .padding(.leading,20)
+                        .padding(.leading,70)
                         .sheet(isPresented: $showCameraImagePicker) {
                             ImagePicker(selectedImage:self.$image, isImageSelected: self.$isImageSelected, sourceType: .camera)
                         
                     }
+                }
+                .textCase(nil)
+                .alert(isPresented: self.$showDublicated) {
+                    dublicatePhoto
                 }
                 Group {
                     if self.isImageSelected {
@@ -136,13 +131,18 @@ struct PictureTakeing: View {
                             }
                         }
                         
-                        Section(header: Text("Contact Info"), footer:
-                                    Button(action: {UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),to: nil,from: nil, for: nil) }) {
-                                        Image(systemName: "keyboard")
-                                            .font(Font.title.weight(.light))
-                                            .foregroundColor(.blue)
+                        Section(header: Text("Contact Info (Optional)"), footer:
+                                    HStack {
+                                        Button(action: {UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),to: nil,from: nil, for: nil) }) {
+                                            Image(systemName: "keyboard")
+                                                .font(Font.title.weight(.light))
+                                                .foregroundColor(.blue)
+                                            
+                                        }
                                         
-                                    }){
+                                        Text("Dismiss the keyboard")
+                                    }
+                                    ){
                             TextEditor(text: $contactInformation)
                                 .frame(height: 100)
                                 .font(.custom("Helvetica", size: 14))
@@ -155,34 +155,37 @@ struct PictureTakeing: View {
                                 .padding(.bottom, keyboardHeight + 100)
                                 
                         }
-                        
-                        
+                        .textCase(nil)
                         
                     }
-                    
-                    
                 }
                 .alert(isPresented: self.$showSaveErrorAlert) {
                     saveFailAlert
                 }
                 
-                if self.sourceType == "library" {
-                    Section(header: Text("Choose a location for the Image")) {
-                        NavigationLink(destination:mapView(latitude: $photoLocation.latitude, longtitude: $photoLocation.longitude, locationLat: center.latitude, locationLong: center.longitude)) {
-                            Text("Select a location")
+                if self.sourceType == "library" && self.isImageSelected {
+                    Section(header: Text("Choose A Location For The Image")) {
+                        NavigationLink(destination: mapView(latitude: $photoLocation.latitude, longtitude: $photoLocation.longitude, locationLat: center.latitude, locationLong: center.longitude)) {
+                            HStack {
+                                Image(systemName:"mappin.and.ellipse")
+                                    .imageScale(.medium)
+                                    .foregroundColor(.blue)
+                                Text("Select a location")
+                            }
                             
                         }
                         
-                        Text("Lat: \(formatter(number: Double(photoLocation.latitude))) Long: \(formatter(number: Double(photoLocation.longitude)))")
+                        Text("Long: \(formatter(number: Double(photoLocation.longitude))) Lat: \(formatter(number: Double(photoLocation.latitude)))")
                     }
+                    .textCase(nil)
                 }
-                
-
             }
+            
             .sheet(isPresented: $showLibraryImagePicker) {
                 ImagePicker(selectedImage:self.$image, isImageSelected: self.$isImageSelected, sourceType: .photoLibrary)
                 
             }
+            
             .actionSheet(isPresented: self.$showActionSheet) {
                 ActionSheet(title: Text("Pick a picture"), buttons: [
                                 .default(Text("Camera")){self.showCameraImagePicker = true
@@ -197,17 +200,16 @@ struct PictureTakeing: View {
             .alert(isPresented: $showSaveSuccessAlert) {
                 saveSuccessAlert
             }
+            
             .navigationBarTitle("Record", displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
                 //showActionSheet = true
                 save()
             }){
-                Text("Save")
+                Text("Upload")
                 
             })
             
-            
- 
         }
         
     }
@@ -219,18 +221,12 @@ struct PictureTakeing: View {
     var saveFailAlert:Alert {
         Alert(title: Text("Record Upload failed"), message: Text("The record uploaded failed because of bad internet quality, you can upload late"), dismissButton: .default(Text("OK")))
     }
-    func formatter(number: Double) -> String
-    {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        let n = Double(number)
-        return formatter.string(from: NSNumber(value: n)) ?? "$0"
+    
+    var dublicatePhoto:Alert {
+        Alert(title: Text("This image has uploaded"), message: Text("Please choose a different image"), dismissButton: .default(Text("OK")))
     }
+    
     func save() {
-//        if self.photoImageData == nil {
-//            showNoImageAlert = true
-//            return
-//        }
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -254,8 +250,16 @@ struct PictureTakeing: View {
         let newPhoto = Photo(context: self.managedObjectContext)
         var  photoData:Data
         if self.isImageSelected {
+            
             photoData = image.jpegData(compressionQuality: 0.8)!
-            newPhoto.photo = photoData
+            if photoData == previousImage {
+                self.showDublicated = true
+                return
+            } else {
+                previousImage = photoData
+                newPhoto.photo = photoData
+            }
+            
         } else {
             let photoUIImage = UIImage(named: "ImageUnavailable")
             photoData = (photoUIImage?.jpegData(compressionQuality: 0.8))!
@@ -309,10 +313,55 @@ struct PictureTakeing: View {
                 }
               }
         }
-        //self.showSaveSuccessAlert = true
     }
     
-    
+    var  multiChoice: some View {
+        VStack(alignment: .leading) {
+            Text(questionList.first!)
+                .padding(.bottom, 10)
+            List {
+                ForEach(0..<choices.count) { index in
+                    HStack {
+                        Button(action: {
+                            if choiceOnce == 0 {
+                                if choiceOnce < 1 {
+                                    choices[index].isSelected = choices[index].isSelected ? false : true
+                                    choiceOnce += 1
+                                    pickedAnswerIndex = index
+                                }
+                            } else {
+                                if choiceOnce > 0 && choices[index].isSelected {
+                                    choiceOnce = 0
+                                    choices[index].isSelected = choices[index].isSelected ? false : true
+                                    pickedAnswerIndex = -1
+                                }
+                            }
+                            
+                        }) {
+                            HStack {
+                                if choices[index].isSelected {
+                                    Image(systemName: "app.fill")
+                                        .foregroundColor(Color("Chicago Maroon"))
+                                        .animation(.easeIn)
+                                } else {
+                                    Image(systemName: "app")
+                                        .foregroundColor(Color("Chicago Maroon"))
+                                        .animation(.easeOut)
+                                }
+                                
+                                Text(choices[index].name)
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                    }
+                    .padding(.bottom)
+                }
+            }
+        }
+    }
+
+
 }
 
 

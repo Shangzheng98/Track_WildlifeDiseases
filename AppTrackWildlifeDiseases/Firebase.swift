@@ -7,11 +7,10 @@
 
 import Foundation
 import Firebase
+let storager = Storage.storage()
+
 public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
-    let storager = Storage.storage()
-    storager.maxUploadRetryTime = 5
-    storager.maxOperationRetryTime = 5
-    storager.maxDownloadRetryTime = 5
+    
     let storagerRef = storager.reference()
     
     let imageRef = storagerRef.child("Mange/\(UUID().uuidString).jpg")
@@ -41,7 +40,7 @@ public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
             let urlString = url.absoluteString
             let data:[String: Any] = ["Date": record.date!,
                         "Contact Information": record.information!,
-                        "Geo Info":[record.latitude!,record.longitude!],
+                        "Geo Info":[record.longitude!,record.latitude!],
                         "URL1":urlString,
                         "Choice": record.choice!,
                         "uuid": record.uuid!]
@@ -61,4 +60,22 @@ public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
     }
     //_ =  semaphore.wait(timeout: .now() + 10)
     return uploadTask
+}
+
+
+public func updateJSonFileFromFirebase() {
+    let mangeJsonRef = storager.reference(withPath:"gs://apptrackwildlifediseases-388bf.appspot.com/mange.json")
+    let profileJsonRef = storager.reference(withPath: "gs://apptrackwildlifediseases-388bf.appspot.com/profile.json")
+    let projectJsonRef = storager.reference(withPath: "gs://apptrackwildlifediseases-388bf.appspot.com/project.json")
+    
+    mangeJsonRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+      if let error = error {
+        // Uh-oh, an error occurred!
+      } else {
+        // Data for "images/island.jpg" is returned
+        
+      }
+    }
+    
+    
 }

@@ -50,14 +50,6 @@ struct ListItem: View {
         })
     }
     
-    func formatter(number: Double) -> String
-    {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        let n = Double(number)
-        return formatter.string(from: NSNumber(value: n)) ?? "$0"
-    }
-    
     func getLocation() {
 //        var r: String = ""
 //        let sem = DispatchSemaphore(value: 0)

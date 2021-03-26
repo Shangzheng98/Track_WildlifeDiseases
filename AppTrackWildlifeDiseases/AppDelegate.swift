@@ -19,6 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         getPermissionForLocation()
         FirebaseApp.configure()
         
+        
+        storager.maxUploadRetryTime = 5
+        storager.maxOperationRetryTime = 5
+        storager.maxDownloadRetryTime = 5
+        
+        
+        readProjectJsonFile()
+        readProfileJsonFile()
+        readMangeJsonFile()
+        
+        
         getNetWorkStatus()
         
         return true

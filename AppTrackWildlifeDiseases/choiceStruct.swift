@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Choice {
+public struct Choice {
     var id = UUID()
     var name:String
     var isSelected:Bool = false
