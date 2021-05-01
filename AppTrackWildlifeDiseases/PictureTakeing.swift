@@ -34,10 +34,9 @@ struct PictureTakeing: View {
 //                                           Choice(name: "poor")]
     @State private var choices:[Choice] = choicesList.first!
     @State private var contactInformation = ""
-    
+    @State private var additionalInformation = ""
     @State private var percentComplete:Double = 0.0
     @State private var choiceOnce = 0
-    @State private var keyboardHeight:CGFloat = 0
     
     private let center = currentLocation()
     @State private var photoLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -68,13 +67,13 @@ struct PictureTakeing: View {
                                     .font(.system(size:15))
                             }
                             
-                }, footer: Text("Slecet one choice")) {
+                }) {
                     multiChoice
                 }
                 .textCase(nil)
                 
                 Section(header: HStack {
-                    Text("Pick Image")
+                    Text("Select Image")
                     Spacer()
                     Button(action: {
                         showImagePickerTutorial = true
@@ -125,35 +124,36 @@ struct PictureTakeing: View {
                 }
                 Group {
                     if self.isImageSelected {
-                        Section(header: Text("choose the date for the picture"), footer:Text("The default date is tody")) {
+                        Section(header: Text("Select date when picture was taken"), footer:Text("The default date is tody")) {
                             DatePicker(selection:$date, in:dateClosedRange,displayedComponents:.date) {
                                 Text("select a date")
                             }
                         }
+                        .textCase(nil)
                         
-                        Section(header: Text("Contact Info (Optional)"), footer:
-                                    HStack {
-                                        Button(action: {UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),to: nil,from: nil, for: nil) }) {
-                                            Image(systemName: "keyboard")
-                                                .font(Font.title.weight(.light))
-                                                .foregroundColor(.blue)
-                                            
-                                        }
-                                        
-                                        Text("Dismiss the keyboard")
-                                    }
+                        Section(header: Text("Contact Info (Optional)")
                                     ){
-                            TextEditor(text: $contactInformation)
-                                .frame(height: 100)
+                            TextField("email and full name",text: $contactInformation) {
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),to: nil,from: nil, for: nil)
+                            }
+                                
                                 .font(.custom("Helvetica", size: 14))
                                 .foregroundColor(.primary)
                                 .multilineTextAlignment(.leading)
-                                .onReceive(Publishers.keyboardHeight) {
-                                    self.keyboardHeight = $0
+                                
+                                
+                        }
+                        .textCase(nil)
+                        
+                        
+                        Section(header: Text("Additional Comments (Optional)")) {
+                            TextEditor(text: $additionalInformation)
+                                .font(.custom("Helvetica", size: 14))
+                                .foregroundColor(.primary)
+                                .multilineTextAlignment(.leading)
+                                .onTapGesture {
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),to: nil,from: nil, for: nil)
                                 }
-                                
-                                .padding(.bottom, keyboardHeight + 100)
-                                
                         }
                         .textCase(nil)
                         
@@ -164,13 +164,13 @@ struct PictureTakeing: View {
                 }
                 
                 if self.sourceType == "library" && self.isImageSelected {
-                    Section(header: Text("Choose A Location For The Image")) {
+                    Section(header: Text("Select location where image was taken")) {
                         NavigationLink(destination: mapView(latitude: $photoLocation.latitude, longtitude: $photoLocation.longitude, locationLat: center.latitude, locationLong: center.longitude)) {
                             HStack {
                                 Image(systemName:"mappin.and.ellipse")
                                     .imageScale(.medium)
                                     .foregroundColor(.blue)
-                                Text("Select a location")
+                                Text("Select location")
                             }
                             
                         }
@@ -179,6 +179,7 @@ struct PictureTakeing: View {
                     }
                     .textCase(nil)
                 }
+                Text("To submit your observation click on “Upload” in the right top corner of your screen.")
             }
             
             .sheet(isPresented: $showLibraryImagePicker) {
@@ -187,7 +188,7 @@ struct PictureTakeing: View {
             }
             
             .actionSheet(isPresented: self.$showActionSheet) {
-                ActionSheet(title: Text("Pick a picture"), buttons: [
+                ActionSheet(title: Text("Upload an image from:"), buttons: [
                                 .default(Text("Camera")){self.showCameraImagePicker = true
                                     self.sourceType = "camera"
                                 },
@@ -215,7 +216,7 @@ struct PictureTakeing: View {
     }
     
     var saveSuccessAlert:Alert {
-        Alert(title: Text("Record Uploaded!"), message:Text("The record has uploaded successfully!"), dismissButton: .default(Text("OK")))
+        Alert(title: Text("Upload Successful"), message:Text("Your observation has been recorded. Thank you!"), dismissButton: .default(Text("OK")))
     }
     
     var saveFailAlert:Alert {
@@ -223,7 +224,7 @@ struct PictureTakeing: View {
     }
     
     var dublicatePhoto:Alert {
-        Alert(title: Text("This image has uploaded"), message: Text("Please choose a different image"), dismissButton: .default(Text("OK")))
+        Alert(title: Text("This image has already been uploaded!"), message: Text("Please select a different image"), dismissButton: .default(Text("OK")))
     }
     
     func save() {
@@ -234,7 +235,8 @@ struct PictureTakeing: View {
         let location = currentLocation()
         let newRecord = Record(context: self.managedObjectContext)
         newRecord.date = dateString
-        newRecord.information = self.contactInformation
+        newRecord.contactInformation = self.contactInformation
+        newRecord.additionalInformation = self.additionalInformation
         newRecord.choice = pickedAnswerIndex == -1 ? "" : self.choices[pickedAnswerIndex].name
         if self.sourceType == "camera" {
             newRecord.latitude = NSNumber(value: location.latitude)
@@ -254,6 +256,7 @@ struct PictureTakeing: View {
             photoData = image.jpegData(compressionQuality: 0.8)!
             if photoData == previousImage {
                 self.showDublicated = true
+                newPhoto.photo = photoData
                 return
             } else {
                 previousImage = photoData
@@ -366,20 +369,20 @@ struct PictureTakeing: View {
 
 
 
-extension Publishers {
-    static var keyboardHeight: AnyPublisher<CGFloat,Never> {
-        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
-            .map{
-                $0.keyboardHeight
-            }
-        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
-            .map {
-                _ in CGFloat(0)
-            }
-        return Merge(willShow,willHide)
-            .eraseToAnyPublisher()
-    }
-}
+//extension Publishers {
+//    static var keyboardHeight: AnyPublisher<CGFloat,Never> {
+//        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
+//            .map{
+//                $0.keyboardHeight
+//            }
+//        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
+//            .map {
+//                _ in CGFloat(0)
+//            }
+//        return Merge(willShow,willHide)
+//            .eraseToAnyPublisher()
+//    }
+//}
 
 extension Notification {
     var keyboardHeight: CGFloat {

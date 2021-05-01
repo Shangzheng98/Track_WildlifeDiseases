@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 import SwiftUI
 
-//https://www.youtube.com/watch?v=QuYA7gQjTt4
+/// We reference thet https://www.youtube.com/watch?v=QuYA7gQjTt4 to implement the map.
 struct mapView: UIViewRepresentable {
     @Binding var latitude : Double
     @Binding var longtitude: Double

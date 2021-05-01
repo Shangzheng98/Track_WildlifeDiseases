@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21957F6CC66555DD41C8D74F /* Pods_TrackDiseases.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B879A8B09CE4CE176907B5 /* Pods_TrackDiseases.framework */; };
+		237AFFDADC811A9274EBCC2D /* libPods-TrackDiseases.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2FB2E10A8E683D6562F7C3 /* libPods-TrackDiseases.a */; };
 		2A1BD13D25F7DF0300A2E8ED /* choiceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BD13C25F7DF0300A2E8ED /* choiceStruct.swift */; };
 		2A1BD14125F7EA3600A2E8ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A1BD14025F7EA3600A2E8ED /* GoogleService-Info.plist */; };
 		2A41408B25F22E9600F31F9B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A41408A25F22E9600F31F9B /* Launch Screen.storyboard */; };
@@ -77,8 +77,8 @@
 		2AB2271125E6AC1D004F8350 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		2AB2271425E6AC3B004F8350 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		2AB2271925E77A94004F8350 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
-		56B879A8B09CE4CE176907B5 /* Pods_TrackDiseases.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackDiseases.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9338ED3C8DBCAF2441A0B4C1 /* Pods-TrackDiseases.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackDiseases.release.xcconfig"; path = "Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases.release.xcconfig"; sourceTree = "<group>"; };
+		AC2FB2E10A8E683D6562F7C3 /* libPods-TrackDiseases.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackDiseases.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61EEB84C30CB679F4417222 /* Pods-TrackDiseases.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackDiseases.debug.xcconfig"; path = "Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21957F6CC66555DD41C8D74F /* Pods_TrackDiseases.framework in Frameworks */,
+				237AFFDADC811A9274EBCC2D /* libPods-TrackDiseases.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +236,7 @@
 		2B555D2556D02A2241B79BA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				56B879A8B09CE4CE176907B5 /* Pods_TrackDiseases.framework */,
+				AC2FB2E10A8E683D6562F7C3 /* libPods-TrackDiseases.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 				2AB2265725DEBDCF004F8350 /* Sources */,
 				2AB2265825DEBDCF004F8350 /* Frameworks */,
 				2AB2265925DEBDCF004F8350 /* Resources */,
-				46C571D0FE4A1529238DCD8C /* [CP] Embed Pods Frameworks */,
+				E3CFF358CE271286079CAAEB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -314,21 +314,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		46C571D0FE4A1529238DCD8C /* [CP] Embed Pods Frameworks */ = {
+		E3CFF358CE271286079CAAEB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackDiseases/Pods-TrackDiseases-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F4EB1ED705007A867DB68256 /* [CP] Check Pods Manifest.lock */ = {

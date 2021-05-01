@@ -30,7 +30,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>App needs to access camera so that you can take a photo!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App needs to determine your location to add it to picked or taken photos!</string>
+	<string>Your current location will we used to georeferenced your input data (e.g., photo uploads)</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>The App will access the Photo Library</string>
 	<key>UIApplicationSceneManifest</key>

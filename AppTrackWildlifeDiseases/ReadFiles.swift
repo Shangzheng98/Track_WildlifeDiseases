@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// The readProjectJsonFile will read the project.json file to load the content related to th project.
 func readProjectJsonFile() {
     let path: URL? = Bundle.main.url(forResource: "project.json", withExtension: nil)
     let jsonData: Data?
@@ -44,6 +45,7 @@ func readProjectJsonFile() {
 }
 
 
+/// This function will read profile.json to load the profile information of the client.
 func readProfileJsonFile() {
     let path: URL? = Bundle.main.url(forResource: "profile.json", withExtension: nil)
     let jsonData: Data?

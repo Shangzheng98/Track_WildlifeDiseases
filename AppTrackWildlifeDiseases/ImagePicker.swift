@@ -81,27 +81,6 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
             parent.isImageSelected = true
             parent.presentationMode.wrappedValue.dismiss()
-            // Scale the picked image to the thumbnail size for storage and performance efficiency reasons.
-            // The scale() method is given below as an extension of the UIImage class.
-          
-    //        let thumbnailImage = pickedImage.scale(toSize: CGSize(width: thumbnailImageWidth, height: thumbnailImageHeight))
-    //
-    //        // jpegData returns a data object containing thumbnailImage in JPEG format.
-    //        if let thumbnailData = thumbnailImage.jpegData(compressionQuality: 1.0) {
-    //            /*
-    //             🔴 Changing photoImageData value here is reflected in the @State private var photoImageData
-    //                in calling view file because of the @Binding keyword.
-    //             */
-    //            photoImageData = thumbnailData
-    //        } else {
-    //            photoImageData = nil
-    //        }
-    //
-    //        /*
-    //        🔴 Changing imagePickerShown value here is reflected in the @State private var showImagePicker
-    //           in calling view file because of the @Binding keyword.
-    //        */
-          
               
         }
       

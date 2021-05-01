@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// This is the struct for saving record.
 struct RecordStruct: Hashable, Codable, Identifiable {
     var id:UUID
     var latitude: Double

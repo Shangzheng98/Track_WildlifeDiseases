@@ -1,13 +1,13 @@
 {
     "projectWebsit": "https://apptrackwildlifediseases-388bf.web.app",
     "quesitons": [
-        "How much you know about mange?"
+        "What is your level of expertise on mange? (Select only one choice)"
     ],
     "choiceSets": [
         [
-            "expert",
-            "mediem",
-            "poor"
+            "Expert",
+            "Competent",
+            "Novice"
         ]
     ]
 }

@@ -9,6 +9,9 @@ import Foundation
 import Firebase
 let storager = Storage.storage()
 
+/// This function will upload the record to the cloud database, and will return the FIRStorageObservableTask reference.
+/// - Parameter record: the reference of user record in the database
+/// - Returns: FIRStorageObservableTask refenerce of the uploadTask.
 public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
     
     let storagerRef = storager.reference()
@@ -39,11 +42,12 @@ public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
             let documentRef = Firestore.firestore().collection("users").document(record.uuid!)
             let urlString = url.absoluteString
             let data:[String: Any] = ["Date": record.date!,
-                        "Contact Information": record.information!,
+                        "Contact Information": record.contactInformation!,
+                        "Additional Information": record.additionalInformation!,
                         "Geo Info":[record.longitude!,record.latitude!],
-                        "URL1":urlString,
+                        "ImageURL":urlString,
                         "Choice": record.choice!,
-                        "uuid": record.uuid!]
+                        "UUID": record.uuid!]
             documentRef.setData(data,completion: { (err) in
                 if err != nil {
                     print("the url is wroing")
@@ -60,22 +64,4 @@ public func uploadToStorageAndDataBase(record:Record) -> StorageUploadTask{
     }
     //_ =  semaphore.wait(timeout: .now() + 10)
     return uploadTask
-}
-
-
-public func updateJSonFileFromFirebase() {
-    let mangeJsonRef = storager.reference(withPath:"gs://apptrackwildlifediseases-388bf.appspot.com/mange.json")
-    let profileJsonRef = storager.reference(withPath: "gs://apptrackwildlifediseases-388bf.appspot.com/profile.json")
-    let projectJsonRef = storager.reference(withPath: "gs://apptrackwildlifediseases-388bf.appspot.com/project.json")
-    
-    mangeJsonRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-      if let error = error {
-        // Uh-oh, an error occurred!
-      } else {
-        // Data for "images/island.jpg" is returned
-        
-      }
-    }
-    
-    
 }
