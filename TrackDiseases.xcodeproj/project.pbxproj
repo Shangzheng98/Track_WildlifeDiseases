@@ -515,7 +515,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"AppTrackWildlifeDiseases/Preview Content\"";
-				DEVELOPMENT_TEAM = 529B49UR6X;
+				DEVELOPMENT_TEAM = C2PZ97GFJT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AppTrackWildlifeDiseases/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -523,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.TrackWildLifeDiseases;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EscobarLab.TrackWildLifeDiseases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -538,7 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"AppTrackWildlifeDiseases/Preview Content\"";
-				DEVELOPMENT_TEAM = 529B49UR6X;
+				DEVELOPMENT_TEAM = C2PZ97GFJT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AppTrackWildlifeDiseases/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -546,7 +546,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.TrackWildLifeDiseases;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EscobarLab.TrackWildLifeDiseases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
